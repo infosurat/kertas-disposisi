@@ -9,30 +9,30 @@
     body {
       font-family: "Times New Roman", serif;
       margin: 0;
-      padding: 10px;
+      padding: 5px;
       background: #f3f3f3;
-      font-size: 12px;
+      font-size: 13px;
     }
     .page {
       background: white;
-      width: 209mm;
-      min-height: 290mm; /* A4 */
+      width: 210mm;
+      min-height: 297mm; /* A4 */
       margin: auto;
-      padding: 10mm;
+      padding: 8mm;
       box-sizing: border-box;
       box-shadow: 0 0 8px rgba(0,0,0,0.2);
     }
     .lembar {
       border: 1px solid #000;
-      padding: 8px;
-      margin-bottom: 0px;
-      min-height: 123mm; /* dikurangi agar muat dua lembar */
+      padding: 6px;
+      margin-bottom: 0;
+      min-height: 128mm; /* dua lembar muat pas 1 A4 */
       box-sizing: border-box;
     }
     .kop {
       text-align: center;
       border-bottom: 2px solid #000;
-      margin-bottom: 5px;
+      margin-bottom: 3px;
     }
     .kop img {
       width: 30px;
@@ -46,16 +46,16 @@
       text-align: center;
       font-weight: bold;
       text-decoration: underline;
-      margin: 5px 0;
+      margin: 3px 0;
     }
     .grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 6px;
-      margin-top: 5px;
+      gap: 4px;
+      margin-top: 3px;
     }
     .grid label { font-weight: bold; }
-    input[type="text"], textarea {
+    input[type="text"], input[type="date"], textarea {
       width: 100%;
       border: none;
       border-bottom: 1px solid #000;
@@ -64,25 +64,26 @@
     }
     textarea {
       border: 1px solid #000;
-      min-height: 35px;
+      min-height: 30px;
+      resize: vertical;
     }
     .sifat {
-      margin: 5px 0;
+      margin: 4px 0;
     }
-    .sifat label { margin-right: 15px; }
+    .sifat label { margin-right: 10px; }
     .tanda {
-      margin-top: 10px;
+      margin-top: 8px;
       text-align: right;
     }
-    .spasi-tanda { height: 40px; } /* spasi untuk tanda tangan */
-    .copy-separator { border-top: 1px dashed #000; margin: 12px 0; }
+    .spasi-tanda { height: 30px; } /* spasi tanda tangan */
+    .copy-separator { border-top: 1px dashed #000; margin: 8px 0; }
     button {
       display: block;
-      margin: 15px auto;
+      margin: 10px auto;
       background: #0f8b66;
       color: white;
       border: none;
-      padding: 10px 20px;
+      padding: 8px 18px;
       border-radius: 6px;
       cursor: pointer;
     }
@@ -100,13 +101,14 @@
         <h4>KECAMATAN SEBERUANG</h4>
         <div style="clear:both"></div>
       </div>
+
       <div class="judul">LEMBAR DISPOSISI</div>
 
       <div class="grid">
         <label>Surat dari:</label><input type="text" id="suratDari">
         <label>Nomor Surat:</label><input type="text" id="nomorSurat">
-        <label>Tanggal Surat:</label><input type="text" id="tanggalSurat">
-        <label>Diterima Tanggal:</label><input type="text" id="diterimaTanggal">
+        <label>Tanggal Surat:</label><input type="date" id="tanggalSurat"> 
+        <label>Diterima Tanggal:</label><input type="date" id="diterimaTanggal"> 
         <label>Nomor Agenda:</label><input type="text" id="nomorAgenda">
       </div>
 
@@ -121,15 +123,16 @@
         <label>Diteruskan kepada:</label>
         <textarea id="diteruskan"></textarea>
       </div>
+
       <div>
         <label>Catatan:</label>
         <textarea id="catatan"></textarea>
       </div>
 
       <div class="tanda">
-        <p>Camat Seberuang</p>
+        <p><strong>Camat Seberuang</strong></p>
         <div class="spasi-tanda"></div>
-        <p>Fransiskus, S.Sos</p>
+        <p><strong>Fransiskus, S.Sos</strong></p>
         <p>Pembina (IV/a)</p>
         <p>NIP. 19740817 200401 1 001</p>
       </div>
@@ -137,7 +140,7 @@
 
     <div class="copy-separator"></div>
 
-    <!-- Lembar Bawah (copy otomatis) -->
+    <!-- Lembar Bawah -->
     <div class="lembar">
       <div class="kop">
         <img src="https://www.kapuashulukab.go.id/home/public/assets/images/pages/pages_70Logo-KH-Baru.png" alt="Logo">
@@ -145,13 +148,14 @@
         <h4>KECAMATAN SEBERUANG</h4>
         <div style="clear:both"></div>
       </div>
+
       <div class="judul">LEMBAR DISPOSISI</div>
 
       <div class="grid">
         <label>Surat dari:</label><input type="text" id="suratDariCopy">
         <label>Nomor Surat:</label><input type="text" id="nomorSuratCopy">
-        <label>Tanggal Surat:</label><input type="text" id="tanggalSuratCopy">
-        <label>Diterima Tanggal:</label><input type="text" id="diterimaTanggalCopy">
+        <label>Tanggal Surat:</label><input type="date" id="tanggalSuratCopy"> 
+        <label>Diterima Tanggal:</label><input type="date" id="diterimaTanggalCopy"> 
         <label>Nomor Agenda:</label><input type="text" id="nomorAgendaCopy">
       </div>
 
@@ -166,20 +170,20 @@
         <label>Diteruskan kepada:</label>
         <textarea id="diteruskanCopy"></textarea>
       </div>
+
       <div>
         <label>Catatan:</label>
         <textarea id="catatanCopy"></textarea>
       </div>
 
       <div class="tanda">
-        <p>Camat Seberuang</p>
+        <p><strong>Camat Seberuang</strong></p>
         <div class="spasi-tanda"></div>
-        <p>Fransiskus, S.Sos</p>
+        <p><strong>Fransiskus, S.Sos</strong></p>
         <p>Pembina (IV/a)</p>
         <p>NIP. 19740817 200401 1 001</p>
       </div>
     </div>
-
   </div>
 
   <button onclick="downloadPDF()">Download PDF</button>
@@ -193,17 +197,17 @@
       });
     });
 
-    // Tanggal otomatis
+    // Tanggal otomatis hari ini
     const today = new Date();
     const tgl = today.toISOString().split('T')[0];
     document.getElementById('diterimaTanggal').value = tgl;
     document.getElementById('diterimaTanggalCopy').value = tgl;
 
-    // Download PDF
+    // Fungsi Download PDF
     async function downloadPDF() {
       const element = document.getElementById('page');
       element.style.background = '#ffffff';
-      await new Promise(resolve=>setTimeout(resolve,500));
+      await new Promise(resolve=>setTimeout(resolve,300));
 
       const opt = {
         margin: 0,
