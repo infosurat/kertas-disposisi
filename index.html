@@ -202,7 +202,17 @@
     const tgl = today.toISOString().split('T')[0];
     document.getElementById('diterimaTanggal').value = tgl;
     document.getElementById('diterimaTanggalCopy').value = tgl;
+   // Fungsi ubah format tanggal ke DD-MM-YYYY
+function formatTanggal(dateInput) {
+  if (!dateInput) return "";
+  const date = new Date(dateInput);
+  const y = date.getFullYear();
+  const m = String(date.getMonth() + 1).padStart(2, '0');
+  const d = String(date.getDate()).padStart(2, '0');
+  return `${d}-${m}-${y}`;
+}
 
+ 
     // Fungsi Download PDF + Kirim Data ke SheetDB
     async function downloadPDF() {
       const element = document.getElementById('page');
@@ -223,9 +233,9 @@
         data: [{
           Asal_Tujuan_Surat: document.getElementById("suratDari").value,
           Nomor_Surat: document.getElementById("nomorSurat").value,
-          Tanggal_Surat: document.getElementById("tanggalSurat").value,
+          Tanggal_Surat:formatTanggal(document.getElementById('tanggalSurat').value),
           Hal: document.getElementById("diteruskan").value,
-          Tanggal_Diterima_Dikirim: document.getElementById("diterimaTanggal").value,
+          Tanggal_Diterima_Dikirim:formatTanggal(document.getElementById('diterimaTanggal').value),
           Nomor: document.getElementById("nomorAgenda").value
         }]
       };
@@ -257,3 +267,4 @@
   </button>
 </body>
 </html>
+ly appear in the frame below.</p>
