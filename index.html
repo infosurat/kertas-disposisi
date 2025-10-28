@@ -203,7 +203,7 @@
     document.getElementById('diterimaTanggal').value = tgl;
     document.getElementById('diterimaTanggalCopy').value = tgl;
 
-    // Fungsi Download PDF
+    // Fungsi Download PDF + Kirim Data ke SheetDB
     async function downloadPDF() {
       const element = document.getElementById('page');
       element.style.background = '#ffffff';
@@ -217,15 +217,43 @@
         jsPDF: { unit:'mm', format:'a4', orientation:'portrait' }
       };
       html2pdf().set(opt).from(element).save();
+
+      // === Kirim data ke SheetDB ===
+      const data = {
+        data: [{
+          Asal_Tujuan_Surat: document.getElementById("suratDari").value,
+          Nomor_Surat: document.getElementById("nomorSurat").value,
+          Tanggal_Surat: document.getElementById("tanggalSurat").value,
+          Hal: document.getElementById("diteruskan").value,
+          Tanggal_Diterima_Dikirim: document.getElementById("diterimaTanggal").value,
+          Nomor: document.getElementById("nomorAgenda").value
+        }]
+      };
+
+      try {
+        const res = await fetch("https://sheetdb.io/api/v1/f10drm0h22cjz", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(data)
+        });
+        if (res.ok) {
+          alert("✅ Data berhasil dikirim ke Spreadsheet!");
+        } else {
+          alert("⚠️ Gagal mengirim data ke SheetDB.");
+        }
+      } catch (err) {
+        alert("❌ Terjadi kesalahan saat mengirim data: " + err);
+      }
     }
   </script>
+
   <!-- Tombol Kembali ke Halaman e-Surat -->
-<button onclick="window.location.href='https://infosurat.github.io/e-surat/'"
-        style="position: fixed; top: 15px; right: 15px; 
-               background: #0f8b66; color: white; border: none; 
-               padding: 8px 14px; border-radius: 6px; 
-               cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
-  ⬅️ Kembali
-</button>
+  <button onclick="window.location.href='https://infosurat.github.io/e-surat/'"
+          style="position: fixed; top: 15px; right: 15px; 
+                 background: #0f8b66; color: white; border: none; 
+                 padding: 8px 14px; border-radius: 6px; 
+                 cursor: pointer; box-shadow: 0 2px 5px rgba(0,0,0,0.2);">
+    ⬅️ Kembali
+  </button>
 </body>
 </html>
