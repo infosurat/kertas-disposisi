@@ -223,7 +223,7 @@ function formatTanggal(dateInput) {
         margin: 0,
         filename: 'Lembar-Disposisi-Seberuang.pdf',
         image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 3, backgroundColor: '#ffffff', useCORS:true, scrollY:0 },
+        html2canvas: { scale: 2.8, backgroundColor: '#ffffff', useCORS:true, scrollY:0 },
         jsPDF: { unit:'mm', format:'a4', orientation:'portrait' }
       };
       html2pdf().set(opt).from(element).save();
